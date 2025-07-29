@@ -3,83 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elysian Couture | Home</title>
+    <title>Iliona Speaks Style | Fashion Designer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Custom CSS for 3D effects and animations */
-        .tree-container {
-            perspective: 1000px;
+        /* Custom CSS for 3D fashion cabinet */
+        .cabinet-container {
+            perspective: 1200px;
             height: 600px;
             position: relative;
+            margin: 0 auto;
         }
         
-        .tree-trunk {
-            width: 30px;
-            height: 300px;
-            background: linear-gradient(to right, #8B4513, #A0522D, #8B4513);
+        .cabinet {
+            width: 80%;
+            height: 500px;
+            background: linear-gradient(to bottom, #f8e9e9, #f5f5f5);
             position: absolute;
             bottom: 0;
             left: 50%;
-            transform: translateX(-50%) rotateX(20deg);
+            transform: translateX(-50%) rotateX(15deg);
             transform-origin: bottom;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.2);
+            border: 2px solid #e0c9c9;
+            overflow: hidden;
         }
         
-        .branch {
+        .cabinet-door {
             position: absolute;
-            width: 15px;
-            background: linear-gradient(to right, #654321, #8B4513, #654321);
-            transform-origin: bottom left;
-            border-radius: 8px;
-            transition: all 0.5s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, #f3e5e5, #f8f1f1);
+            transform-origin: left;
+            transform: rotateY(20deg);
+            transition: all 0.8s ease;
+            border-left: 3px solid #e0c9c9;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
         }
         
-        .leaf {
+        .cabinet:hover .cabinet-door {
+            transform: rotateY(60deg);
+        }
+        
+        .hanger {
             position: absolute;
-            width: 80px;
-            height: 80px;
+            width: 40px;
+            height: 20px;
+            background: #d4bebe;
+            border-radius: 10px 10px 0 0;
+            transform-origin: center;
+            z-index: 2;
+        }
+        
+        .thread {
+            position: absolute;
+            width: 2px;
+            background: #d4bebe;
+            transform-origin: top;
+            z-index: 1;
+        }
+        
+        .design-piece {
+            position: absolute;
             background-size: cover;
             background-position: center;
-            border-radius: 50%;
             transform-style: preserve-3d;
             transition: all 0.5s ease;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             overflow: hidden;
+            border-radius: 3px;
         }
         
-        .leaf:hover {
-            transform: scale(1.1) translateZ(20px);
+        .design-piece:hover {
+            transform: scale(1.05) translateZ(20px);
             z-index: 10;
         }
         
-        .leaf::before {
-            content: '';
+        .scissors {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.3);
-            z-index: -1;
+            width: 60px;
+            height: 60px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/3196/3196956.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 5;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .measuring-tape {
+            position: absolute;
+            width: 80px;
+            height: 20px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/3196/3196953.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 5;
+            animation: float 5s ease-in-out infinite 1s;
+        }
+        
+        .pin-cushion {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/3196/3196955.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 5;
+            animation: float 3s ease-in-out infinite 0.5s;
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotateX(0deg); }
-            50% { transform: translateY(-20px) rotateX(5deg); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
         }
         
-        .floating {
-            animation: float 6s ease-in-out infinite;
+        @keyframes swing {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
         }
         
         .nav-link {
@@ -93,7 +141,7 @@
             height: 2px;
             bottom: -2px;
             left: 0;
-            background-color: #f3f4f6;
+            background-color: #f8e9e9;
             transition: width 0.3s ease;
         }
         
@@ -107,8 +155,8 @@
         }
         
         .product-card:hover {
-            transform: translateY(-10px) rotateX(5deg);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
         }
         
         .form-input {
@@ -117,21 +165,19 @@
         
         .form-input:focus {
             transform: scale(1.02);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
-        /* 3D gallery effect */
         .gallery-item {
             transition: all 0.5s ease;
             transform-style: preserve-3d;
         }
         
         .gallery-item:hover {
-            transform: rotateY(10deg) scale(1.05);
+            transform: rotateY(5deg) scale(1.03);
             z-index: 10;
         }
         
-        /* Mobile menu animation */
         .mobile-menu {
             transition: all 0.3s ease;
             transform-origin: top right;
@@ -146,26 +192,74 @@
             transform: scale(1);
             opacity: 1;
         }
+        
+        /* Pastel color palette */
+        .bg-pastel-pink {
+            background-color: #f8e9e9;
+        }
+        
+        .bg-pastel-lavender {
+            background-color: #e9e9f8;
+        }
+        
+        .bg-pastel-mint {
+            background-color: #e9f8f0;
+        }
+        
+        .bg-pastel-peach {
+            background-color: #f8e9e0;
+        }
+        
+        .text-pastel-dark {
+            color: #6d6875;
+        }
+        
+        .border-pastel {
+            border-color: #d4bebe;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f8e9e9;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #d4bebe;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #c4aeae;
+        }
     </style>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-pastel-pink font-sans text-pastel-dark">
     <!-- Navigation -->
-    <nav class="bg-black text-white shadow-lg fixed w-full z-50">
+    <nav class="bg-white bg-opacity-90 shadow-md fixed w-full z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-white hover:text-gray-300 transition">Elysian Couture</a>
+            <a href="index.html" class="text-2xl font-bold text-pastel-dark hover:text-gray-600 transition">Iliona Speaks Style</a>
             
             <!-- Desktop Navigation -->
-            <div class="hidden md:flex space-x-8">
+            <div class="hidden md:flex space-x-8 items-center">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="boutique.html" class="nav-link">Boutique</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
                 <a href="shop.html" class="nav-link">Shop</a>
                 <a href="connect.html" class="nav-link">Connect</a>
-                <a href="order.html" class="bg-white text-black px-4 py-2 rounded-full hover:bg-gray-200 transition">Order Now</a>
+                <a href="tel:+919876543210" class="flex items-center text-pastel-dark hover:text-gray-600">
+                    <i class="fas fa-phone-alt mr-2"></i> +91 98765 43210
+                </a>
+                <a href="https://wa.me/919876543210" class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition flex items-center">
+                    <i class="fab fa-whatsapp mr-2"></i> Order Now
+                </a>
             </div>
             
             <!-- Mobile menu button -->
             <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                <button id="mobile-menu-button" class="text-pastel-dark focus:outline-none">
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -174,58 +268,75 @@
         </div>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu hidden md:hidden absolute top-16 right-0 bg-black w-48 py-2 shadow-xl rounded-lg">
-            <a href="index.html" class="block px-4 py-2 hover:bg-gray-800">Home</a>
-            <a href="boutique.html" class="block px-4 py-2 hover:bg-gray-800">Boutique</a>
-            <a href="shop.html" class="block px-4 py-2 hover:bg-gray-800">Shop</a>
-            <a href="connect.html" class="block px-4 py-2 hover:bg-gray-800">Connect</a>
-            <a href="order.html" class="block px-4 py-2 bg-white text-black mx-2 rounded hover:bg-gray-200">Order Now</a>
+        <div id="mobile-menu" class="mobile-menu hidden md:hidden absolute top-16 right-0 bg-white w-48 py-2 shadow-xl rounded-lg">
+            <a href="index.html" class="block px-4 py-2 hover:bg-pastel-pink">Home</a>
+            <a href="gallery.html" class="block px-4 py-2 hover:bg-pastel-pink">Gallery</a>
+            <a href="shop.html" class="block px-4 py-2 hover:bg-pastel-pink">Shop</a>
+            <a href="connect.html" class="block px-4 py-2 hover:bg-pastel-pink">Connect</a>
+            <a href="tel:+919876543210" class="block px-4 py-2 hover:bg-pastel-pink flex items-center">
+                <i class="fas fa-phone-alt mr-2"></i> Call Us
+            </a>
+            <a href="https://wa.me/919876543210" class="block px-4 py-2 bg-green-500 text-white mx-2 rounded hover:bg-green-600 flex items-center">
+                <i class="fab fa-whatsapp mr-2"></i> WhatsApp
+            </a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4 bg-gradient-to-r from-gray-900 to-gray-700 text-white">
+    <section class="pt-32 pb-20 px-4 bg-gradient-to-r from-pastel-peach to-pastel-lavender">
         <div class="container mx-auto flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6">Redefining Elegance</h1>
-                <p class="text-xl mb-8">Where fashion meets artistry. Discover our exclusive collections crafted with passion and precision.</p>
-                <div class="flex space-x-4">
-                    <a href="shop.html" class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition font-semibold">Explore Collection</a>
-                    <a href="order.html" class="border-2 border-white px-6 py-3 rounded-full hover:bg-white hover:text-black transition font-semibold">Custom Order</a>
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Where Fashion Meets Art</h1>
+                <p class="text-xl mb-8">Exclusive designs crafted with passion and precision by Iliona. Each piece tells a unique story.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="shop.html" class="bg-white text-pastel-dark px-6 py-3 rounded-full hover:bg-gray-100 transition font-semibold shadow-md">Explore Collection</a>
+                    <a href="https://wa.me/919876543210" class="border-2 border-white bg-green-500 text-white px-6 py-3 rounded-full hover:bg-green-600 transition font-semibold shadow-md flex items-center">
+                        <i class="fab fa-whatsapp mr-2"></i> Direct Order
+                    </a>
                 </div>
             </div>
             <div class="md:w-1/2 flex justify-center">
-                <div class="relative floating">
-                    <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Fashion Design" class="rounded-lg shadow-2xl w-full max-w-md transform rotate-3">
-                    <div class="absolute -inset-4 border-2 border-white rounded-lg transform -rotate-3"></div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Fashion Design" class="rounded-lg shadow-2xl w-full max-w-md transform rotate-2 border-4 border-white">
+                    <div class="absolute -inset-4 border-2 border-white rounded-lg transform -rotate-2"></div>
+                    <div class="absolute -bottom-6 -right-6 bg-white p-3 rounded-full shadow-lg">
+                        <i class="fas fa-scissors text-3xl text-pastel-dark"></i>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Categories Tree -->
-    <section class="py-20 px-4 bg-white">
+    <!-- Fashion Cabinet Display -->
+    <section class="py-20 px-4 bg-pastel-mint">
         <div class="container mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-16">Our Design Categories</h2>
+            <h2 class="text-3xl font-bold text-center mb-4">Design Studio</h2>
+            <p class="text-center mb-12 max-w-2xl mx-auto">Explore Iliona's latest creations hanging in her design cabinet. Click on any piece to view details.</p>
             
-            <div class="tree-container mx-auto">
-                <div class="tree-trunk"></div>
-                
-                <!-- Branches and leaves will be added here with JavaScript -->
-                <div id="tree-branches"></div>
+            <div class="cabinet-container mx-auto">
+                <div class="cabinet">
+                    <div class="cabinet-door"></div>
+                    <!-- Hangers, threads and designs will be added here with JavaScript -->
+                    <div id="cabinet-designs"></div>
+                    
+                    <!-- Fashion tools scattered around -->
+                    <div class="scissors" style="top: 20px; right: 30px;"></div>
+                    <div class="measuring-tape" style="top: 80px; left: 40px;"></div>
+                    <div class="pin-cushion" style="bottom: 30px; right: 50px;"></div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Featured Collections -->
-    <section class="py-20 px-4 bg-gray-100">
+    <section class="py-20 px-4 bg-white">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold text-center mb-4">Featured Collections</h2>
-            <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Discover our latest creations that blend contemporary style with timeless elegance.</p>
+            <p class="text-center mb-12 max-w-2xl mx-auto">Discover our latest creations that blend contemporary style with timeless elegance.</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Collection 1 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-lg">
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-lg border border-pastel">
                     <div class="relative overflow-hidden h-80">
                         <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Evening Gowns" class="w-full h-full object-cover transition duration-500 hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
@@ -240,12 +351,14 @@
                             <span class="text-gray-600">Starting from</span>
                             <span class="font-bold text-lg">₹15,999</span>
                         </div>
-                        <a href="shop.html" class="block w-full bg-black text-white text-center py-2 rounded hover:bg-gray-800 transition">View Collection</a>
+                        <a href="https://wa.me/919876543210?text=I'm%20interested%20in%20the%20Evening%20Elegance%20collection" class="block w-full bg-green-500 text-white text-center py-2 rounded hover:bg-green-600 transition flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i> Enquire Now
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Collection 2 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-lg">
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-lg border border-pastel">
                     <div class="relative overflow-hidden h-80">
                         <img src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Casual Wear" class="w-full h-full object-cover transition duration-500 hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
@@ -260,12 +373,14 @@
                             <span class="text-gray-600">Starting from</span>
                             <span class="font-bold text-lg">₹7,999</span>
                         </div>
-                        <a href="shop.html" class="block w-full bg-black text-white text-center py-2 rounded hover:bg-gray-800 transition">View Collection</a>
+                        <a href="https://wa.me/919876543210?text=I'm%20interested%20in%20the%20Urban%20Chic%20collection" class="block w-full bg-green-500 text-white text-center py-2 rounded hover:bg-green-600 transition flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i> Enquire Now
+                        </a>
                     </div>
                 </div>
                 
                 <!-- Collection 3 -->
-                <div class="product-card bg-white rounded-lg overflow-hidden shadow-lg">
+                <div class="product-card bg-white rounded-lg overflow-hidden shadow-lg border border-pastel">
                     <div class="relative overflow-hidden h-80">
                         <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80" alt="Bridal Wear" class="w-full h-full object-cover transition duration-500 hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
@@ -280,9 +395,28 @@
                             <span class="text-gray-600">Starting from</span>
                             <span class="font-bold text-lg">₹49,999</span>
                         </div>
-                        <a href="shop.html" class="block w-full bg-black text-white text-center py-2 rounded hover:bg-gray-800 transition">View Collection</a>
+                        <a href="https://wa.me/919876543210?text=I'm%20interested%20in%20the%20Bridal%20Dreams%20collection" class="block w-full bg-green-500 text-white text-center py-2 rounded hover:bg-green-600 transition flex items-center justify-center">
+                            <i class="fab fa-whatsapp mr-2"></i> Enquire Now
+                        </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Preview -->
+    <section class="py-20 px-4 bg-pastel-lavender">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Design Gallery</h2>
+            <p class="text-center mb-12 max-w-2xl mx-auto">A visual journey through Iliona's creative process and finished masterpieces.</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Gallery items will be added here with JavaScript -->
+                <div id="gallery-preview"></div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="gallery.html" class="bg-white text-pastel-dark px-6 py-3 rounded-full hover:bg-gray-100 transition font-semibold shadow-md inline-block">View Full Gallery</a>
             </div>
         </div>
     </section>
@@ -291,19 +425,29 @@
     <section class="py-20 px-4 bg-white">
         <div class="container mx-auto flex flex-col md:flex-row items-center">
             <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
-                <img src="https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80" alt="Designer" class="rounded-lg shadow-xl w-full">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80" alt="Designer Iliona" class="rounded-lg shadow-xl w-full border-4 border-white">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-full shadow-lg border-2 border-pastel">
+                        <i class="fas fa-pencil-alt text-3xl text-pastel-dark"></i>
+                    </div>
+                </div>
             </div>
             <div class="md:w-1/2">
-                <h2 class="text-3xl font-bold mb-6">Meet the Designer</h2>
-                <p class="text-gray-700 mb-6">With over 15 years of experience in the fashion industry, our lead designer brings a unique blend of traditional craftsmanship and contemporary aesthetics to every creation.</p>
-                <p class="text-gray-700 mb-8">Each piece is meticulously designed to celebrate individuality while maintaining the highest standards of quality and comfort.</p>
-                <a href="connect.html" class="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition font-semibold">Learn More</a>
+                <h2 class="text-3xl font-bold mb-6">Meet Iliona</h2>
+                <p class="mb-6">With a passion for fashion that began in childhood, Iliona has transformed her love for design into a thriving brand that celebrates individuality and craftsmanship.</p>
+                <p class="mb-8">Each piece is meticulously designed to celebrate your unique style while maintaining the highest standards of quality and comfort.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="connect.html" class="bg-pastel-peach text-pastel-dark px-6 py-3 rounded-full hover:bg-pastel-pink transition font-semibold shadow-md">Learn More</a>
+                    <a href="https://instagram.com/ilionaspeaksstyle" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:opacity-90 transition font-semibold shadow-md flex items-center">
+                        <i class="fab fa-instagram mr-2"></i> Follow
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
-    <section class="py-20 px-4 bg-gray-100">
+    <section class="py-20 px-4 bg-pastel-pink">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold text-center mb-12">Client Experiences</h2>
             
@@ -340,7 +484,7 @@
                             <i class="fas fa-star"></i>
                         </div>
                     </div>
-                    <p class="text-gray-700 mb-6">"The attention to detail in their designs is remarkable. I've purchased multiple pieces and each one is a masterpiece."</p>
+                    <p class="text-gray-700 mb-6">"The attention to detail in Iliona's designs is remarkable. I've purchased multiple pieces and each one is a masterpiece."</p>
                     <div class="flex items-center">
                         <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
                         <div>
@@ -361,7 +505,7 @@
                             <i class="fas fa-star-half-alt"></i>
                         </div>
                     </div>
-                    <p class="text-gray-700 mb-6">"The custom tailoring service is exceptional. They perfectly captured my vision and created a dress that fits like a dream."</p>
+                    <p class="text-gray-700 mb-6">"The custom tailoring service is exceptional. Iliona perfectly captured my vision and created a dress that fits like a dream."</p>
                     <div class="flex items-center">
                         <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
                         <div>
@@ -374,83 +518,146 @@
         </div>
     </section>
 
+    <!-- Connect Section -->
+    <section class="py-16 px-4 bg-pastel-mint">
+        <div class="container mx-auto max-w-4xl">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8">
+                        <h2 class="text-2xl font-bold mb-6">Connect With Iliona</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt mt-1 mr-4 text-pastel-dark"></i>
+                                <div>
+                                    <h4 class="font-bold">Studio Address</h4>
+                                    <p class="text-gray-600">123 Fashion Street, Bandra West, Mumbai 400050</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone-alt mr-4 text-pastel-dark"></i>
+                                <div>
+                                    <h4 class="font-bold">Call Us</h4>
+                                    <p class="text-gray-600">+91 98765 43210</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope mr-4 text-pastel-dark"></i>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p class="text-gray-600">hello@ilionaspeaksstyle.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-instagram mr-4 text-pastel-dark"></i>
+                                <div>
+                                    <h4 class="font-bold">Instagram</h4>
+                                    <p class="text-gray-600">@ilionaspeaksstyle</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 flex space-x-4">
+                            <a href="https://instagram.com/ilionaspeaksstyle" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-3 rounded-full hover:opacity-90 transition">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="https://wa.me/919876543210" class="bg-green-500 text-white p-3 rounded-full hover:bg-green-600 transition">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                            </a>
+                            <a href="#" class="bg-blue-500 text-white p-3 rounded-full hover:bg-blue-600 transition">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 bg-pastel-peach p-8 flex items-center">
+                        <div class="w-full">
+                            <h3 class="text-xl font-bold mb-6">Book a Consultation</h3>
+                            <form class="space-y-4">
+                                <input type="text" placeholder="Your Name" class="w-full px-4 py-2 rounded-lg border border-pastel focus:outline-none focus:ring-2 focus:ring-pastel-dark form-input">
+                                <input type="email" placeholder="Your Email" class="w-full px-4 py-2 rounded-lg border border-pastel focus:outline-none focus:ring-2 focus:ring-pastel-dark form-input">
+                                <input type="tel" placeholder="Phone Number" class="w-full px-4 py-2 rounded-lg border border-pastel focus:outline-none focus:ring-2 focus:ring-pastel-dark form-input">
+                                <textarea placeholder="Your Message" class="w-full px-4 py-2 rounded-lg border border-pastel focus:outline-none focus:ring-2 focus:ring-pastel-dark form-input" rows="3"></textarea>
+                                <button type="submit" class="w-full bg-pastel-dark text-white py-2 rounded-lg hover:bg-gray-600 transition font-semibold">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Newsletter -->
-    <section class="py-16 px-4 bg-black text-white">
+    <section class="py-16 px-4 bg-pastel-dark text-white">
         <div class="container mx-auto max-w-4xl text-center">
             <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
-            <p class="mb-8 text-gray-300">Subscribe to our newsletter for exclusive previews, fashion tips, and special offers.</p>
+            <p class="mb-8">Subscribe to our newsletter for exclusive previews, fashion tips, and special offers.</p>
             
             <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-full text-black focus:outline-none focus:ring-2 focus:ring-white">
-                <button type="submit" class="bg-white text-black px-6 py-3 rounded-full hover:bg-gray-200 transition font-semibold">Subscribe</button>
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-full text-pastel-dark focus:outline-none focus:ring-2 focus:ring-white">
+                <button type="submit" class="bg-white text-pastel-dark px-6 py-3 rounded-full hover:bg-gray-200 transition font-semibold">Subscribe</button>
             </form>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 px-4">
+    <footer class="bg-white text-pastel-dark py-12 px-4 border-t border-pastel">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">Elysian Couture</h3>
-                    <p class="text-gray-400">Redefining fashion with artistry and innovation since 2010.</p>
-                    <div class="flex space-x-4 mt-6">
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-pinterest"></i></a>
+                    <h3 class="text-xl font-bold mb-4">Iliona Speaks Style</h3>
+                    <p class="mb-4">Redefining fashion with artistry and innovation.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/ilionaspeaksstyle" class="text-pastel-dark hover:text-gray-600 transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/919876543210" class="text-pastel-dark hover:text-gray-600 transition"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="text-pastel-dark hover:text-gray-600 transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-pastel-dark hover:text-gray-600 transition"><i class="fab fa-pinterest"></i></a>
                     </div>
                 </div>
                 
                 <div>
                     <h4 class="font-bold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="index.html" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="boutique.html" class="text-gray-400 hover:text-white transition">Boutique</a></li>
-                        <li><a href="shop.html" class="text-gray-400 hover:text-white transition">Shop</a></li>
-                        <li><a href="connect.html" class="text-gray-400 hover:text-white transition">Connect</a></li>
-                        <li><a href="order.html" class="text-gray-400 hover:text-white transition">Order Now</a></li>
+                        <li><a href="index.html" class="hover:text-gray-600 transition">Home</a></li>
+                        <li><a href="gallery.html" class="hover:text-gray-600 transition">Gallery</a></li>
+                        <li><a href="shop.html" class="hover:text-gray-600 transition">Shop</a></li>
+                        <li><a href="connect.html" class="hover:text-gray-600 transition">Connect</a></li>
+                        <li><a href="https://wa.me/919876543210" class="hover:text-gray-600 transition">Order Now</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="font-bold mb-4">Customer Service</h4>
                     <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Shipping Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Returns & Exchanges</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">FAQs</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-gray-600 transition">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-gray-600 transition">Shipping Policy</a></li>
+                        <li><a href="#" class="hover:text-gray-600 transition">Returns & Exchanges</a></li>
+                        <li><a href="#" class="hover:text-gray-600 transition">FAQs</a></li>
+                        <li><a href="#" class="hover:text-gray-600 transition">Privacy Policy</a></li>
                     </ul>
                 </div>
                 
                 <div>
-                    <h4 class="font-bold mb-4">Contact Info</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-start">
-                            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
-                            <span>123 Fashion Avenue, Mumbai, India 400001</span>
+                    <h4 class="font-bold mb-4">Opening Hours</h4>
+                    <ul class="space-y-2">
+                        <li class="flex justify-between">
+                            <span>Monday - Friday</span>
+                            <span>10AM - 7PM</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-phone-alt mr-3"></i>
-                            <span>+91 95457 03454</span>
+                        <li class="flex justify-between">
+                            <span>Saturday</span>
+                            <span>11AM - 6PM</span>
                         </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-envelope mr-3"></i>
-                            <span>info@elysiancouture.com</span>
+                        <li class="flex justify-between">
+                            <span>Sunday</span>
+                            <span>Closed</span>
                         </li>
                     </ul>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-                <p>&copy; 2023 Elysian Couture. All rights reserved.</p>
+            <div class="border-t border-pastel mt-12 pt-8 text-center">
+                <p>&copy; 2023 Iliona Speaks Style. All rights reserved.</p>
             </div>
         </div>
     </footer>
-
-    <!-- Other HTML files would be similar in structure but with different content -->
-    <!-- Below is the JavaScript that would be common to all pages -->
 
     <script>
         // Mobile menu toggle
@@ -460,70 +667,98 @@
             menu.classList.toggle('visible');
         });
 
-        // Create the tree with branches and leaves
+        // Create the fashion cabinet with hanging designs
         document.addEventListener('DOMContentLoaded', function() {
-            const treeContainer = document.getElementById('tree-branches');
+            const cabinetDesigns = document.getElementById('cabinet-designs');
+            const galleryPreview = document.getElementById('gallery-preview');
             
-            // Categories data
-            const categories = [
-                { name: "Bridal", image: "https://images.unsplash.com/photo-1525507119021-ed2365f1c3cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", angle: -30, length: 120, level: 1 },
-                { name: "Evening", image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80", angle: -10, length: 140, level: 1 },
-                { name: "Casual", image: "https://images.unsplash.com/photo-1554412933-514a83d2f3c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80", angle: 10, length: 130, level: 1 },
-                { name: "Formal", image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80", angle: 30, length: 110, level: 1 },
-                { name: "Traditional", image: "https://images.unsplash.com/photo-1595341595379-cf2df4f7e0b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", angle: -20, length: 100, level: 2 },
-                { name: "Accessories", image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80", angle: 0, length: 90, level: 2 },
-                { name: "Kids", image: "https://images.unsplash.com/photo-1604917015116-6e7fbc7f3dec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", angle: 20, length: 80, level: 2 }
+            // Designs data
+            const designs = [
+                { name: "Floral Dream", image: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80", left: 30, height: 180, width: 120 },
+                { name: "Urban Chic", image: "https://images.unsplash.com/photo-1554412933-514a83d2f3c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80", left: 50, height: 160, width: 100 },
+                { name: "Evening Glam", image: "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80", left: 70, height: 200, width: 140 },
+                { name: "Bridal Bliss", image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80", left: 20, height: 220, width: 150 },
+                { name: "Summer Breeze", image: "https://images.unsplash.com/photo-1595341595379-cf2df4f7e0b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", left: 80, height: 150, width: 90 }
             ];
             
-            // Create branches and leaves
-            categories.forEach((category, index) => {
-                // Create branch
-                const branch = document.createElement('div');
-                branch.className = 'branch';
-                branch.style.height = `${category.length}px`;
-                branch.style.transform = `rotate(${category.angle}deg)`;
-                branch.style.left = '50%';
-                branch.style.bottom = `${150 + (category.level * 50)}px`;
+            // Gallery images
+            const galleryImages = [
+                "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                "https://images.unsplash.com/photo-1554412933-514a83d2f3c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80",
+                "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=736&q=80",
+                "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                "https://images.unsplash.com/photo-1595341595379-cf2df4f7e0b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                "https://images.unsplash.com/photo-1604917015116-6e7fbc7f3dec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                "https://images.unsplash.com/photo-1589156280159-27698a70f29e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=686&q=80"
+            ];
+
+            // Create hanging designs in cabinet
+            designs.forEach((design, index) => {
+                // Create hanger
+                const hanger = document.createElement('div');
+                hanger.className = 'hanger';
+                hanger.style.left = `${design.left}%`;
+                hanger.style.top = '50px';
                 
-                // Create leaf
-                const leaf = document.createElement('div');
-                leaf.className = 'leaf';
-                leaf.style.backgroundImage = `url('${category.image}')`;
-                leaf.style.left = `${category.length * Math.sin(category.angle * Math.PI / 180)}px`;
-                leaf.style.bottom = `${category.length * Math.cos(category.angle * Math.PI / 180)}px`;
-                leaf.innerHTML = category.name;
+                // Create thread
+                const thread = document.createElement('div');
+                thread.className = 'thread';
+                thread.style.height = `${design.height}px`;
+                thread.style.left = `${design.left}%`;
+                thread.style.top = '70px';
+                thread.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
                 
-                // Position leaf at end of branch
-                leaf.style.transform = `translateX(-50%) translateZ(${index * 5}px)`;
+                // Create design piece
+                const designPiece = document.createElement('div');
+                designPiece.className = 'design-piece';
+                designPiece.style.backgroundImage = `url('${design.image}')`;
+                designPiece.style.height = `${design.height}px`;
+                designPiece.style.width = `${design.width}px`;
+                designPiece.style.left = `${design.left}%`;
+                designPiece.style.top = `${70 + design.height}px`;
+                designPiece.innerHTML = `<span class="bg-black bg-opacity-50 px-2 py-1 rounded">${design.name}</span>`;
                 
-                // Add click event to leaf
-                leaf.addEventListener('click', function() {
-                    window.location.href = 'shop.html';
+                // Add click event to design
+                designPiece.addEventListener('click', function() {
+                    window.location.href = `shop.html?design=${encodeURIComponent(design.name)}`;
                 });
                 
-                // Add elements to tree
-                branch.appendChild(leaf);
-                treeContainer.appendChild(branch);
+                // Add elements to cabinet
+                cabinetDesigns.appendChild(hanger);
+                cabinetDesigns.appendChild(thread);
+                cabinetDesigns.appendChild(designPiece);
             });
             
-            // Animate tree on scroll
+            // Create gallery preview
+            galleryImages.forEach((image, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item rounded-lg overflow-hidden shadow-md border-2 border-white';
+                galleryItem.innerHTML = `
+                    <img src="${image}" alt="Design ${index + 1}" class="w-full h-48 object-cover transition duration-500 hover:scale-110">
+                `;
+                galleryPreview.appendChild(galleryItem);
+            });
+            
+            // Animate cabinet on scroll
             window.addEventListener('scroll', function() {
                 const scrollPosition = window.scrollY;
-                const treeContainer = document.querySelector('.tree-container');
-                const treeRect = treeContainer.getBoundingClientRect();
+                const cabinetContainer = document.querySelector('.cabinet-container');
+                const cabinetRect = cabinetContainer.getBoundingClientRect();
                 
-                if (treeRect.top < window.innerHeight && treeRect.bottom > 0) {
-                    const branches = document.querySelectorAll('.branch');
-                    const leaves = document.querySelectorAll('.leaf');
+                if (cabinetRect.top < window.innerHeight && cabinetRect.bottom > 0) {
+                    const scrollPercent = (scrollPosition - cabinetRect.top + window.innerHeight) / (cabinetRect.height + window.innerHeight);
                     
-                    branches.forEach((branch, index) => {
-                        const rotation = Math.sin(scrollPosition / 200 + index) * 5;
-                        branch.style.transform = `rotate(${categories[index].angle + rotation}deg)`;
-                    });
+                    // Slightly open the cabinet door more as you scroll
+                    const cabinetDoor = document.querySelector('.cabinet-door');
+                    const doorRotation = 20 + (scrollPercent * 20);
+                    cabinetDoor.style.transform = `rotateY(${doorRotation}deg)`;
                     
-                    leaves.forEach((leaf, index) => {
-                        const float = Math.sin(scrollPosition / 100 + index) * 10;
-                        leaf.style.transform = `translateX(-50%) translateY(${float}px) translateZ(${index * 5}px)`;
+                    // Make designs swing slightly
+                    const threads = document.querySelectorAll('.thread');
+                    threads.forEach((thread, index) => {
+                        const swing = Math.sin(scrollPosition / 100 + index) * 5;
+                        thread.style.transform = `rotate(${swing}deg)`;
                     });
                 }
             });
@@ -542,7 +777,7 @@
             
             const message = `New Order Request:%0A%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0ADesign: ${design}%0ASize: ${size}%0AColor: ${color}%0ADelivery Date: ${delivery}%0AAdditional Notes: ${notes}`;
             
-            const whatsappUrl = `https://wa.me/919545703454?text=${message}`;
+            const whatsappUrl = `https://wa.me/919876543210?text=${message}`;
             
             window.open(whatsappUrl, '_blank');
             
@@ -552,5 +787,5 @@
             return false; // Prevent form submission
         }
     </script>
-</body>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=sf075/ilionaspeaksstyle" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
 </html>
